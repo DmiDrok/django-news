@@ -1,0 +1,26 @@
+{% extends 'news/base.html' %}
+
+{% block title %}
+<title>
+    Новость | {{ new.title }}
+</title>
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="content_new">
+    <h2 class="title_new">{{ new.title }}</h2>
+
+    <div class="image_content_here">
+        <img src="{{ new.photo.url }}">
+    </div>
+
+    <div class="text_content_here">
+        {% autoescape off %}
+            {{ new.content | linebreaks }}
+        {% endautoescape %}
+    </div>
+</div>
+
+{% endblock %}

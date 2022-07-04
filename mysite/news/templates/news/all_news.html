@@ -1,0 +1,17 @@
+{% extends 'news/base.html' %}
+
+{% block title %}
+<title>
+    Все новости
+</title>
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="content_news">
+    <h3 class="news_title">Все новости</h3>
+    {% include 'news/needfull/posts.html' %}
+</div>
+
+{% endblock content %}

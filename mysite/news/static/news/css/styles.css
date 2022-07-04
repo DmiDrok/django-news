@@ -1,0 +1,44 @@
+body {
+    background-color: #F8F9FA;
+}
+
+.content_new {
+    width: 70%;
+    margin: 4rem auto;
+}
+
+.content_new .image_content_here {
+    position: relative;
+    display: grid;
+    margin: 2rem 0;
+}
+
+.content_new .image_content_here img {
+    object-fit: cover;
+    max-height: 300px;
+    box-shadow: 1px 1px 5px 10px rgba(100, 100, 100, .1);
+    border-radius: 5px;
+    justify-self: center;
+}
+
+.photo_new {
+    height: 240px;
+}
+
+.about_new {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 1rem;
+    position: absolute;
+    bottom: 25px;
+}
+
+.col .card {
+    height: 417px;
+}
+
+.news_title {
+    margin: 3rem 0 0 5rem;
+    text-decoration: underline;
+    font-weight: 500;
+}
