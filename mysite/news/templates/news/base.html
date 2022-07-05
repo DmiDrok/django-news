@@ -1,4 +1,6 @@
 {% load static %}
+{% load news_tags %}
+
 <!doctype html>
 <html>
     <head>
@@ -25,12 +27,25 @@
                 
                 {% for m in menu %}
                     {% if m.status == 'active' %}
-                        <li><a href="{% url m.name_path %}" class="nav-link px-2 text-secondary">{{ m.name_link }}</a></li>
+                     {% if m.params %}
+                      <li><a href="{% url m.name_path m.params.page%}" class="nav-link px-2 text-secondary">{{ m.name_link }}</a></li>
+                     {% else %}
+                        <li><a href="{% url m.name_path%}" class="nav-link px-2 text-secondary">{{ m.name_link }}</a></li>
+                     {% endif %}
                     {% else %}
-                        <li><a href="{% url m.name_path %}" class="nav-link px-2 text-white">{{ m.name_link }}</a></li>
-                    {% endif %}
+                      {% if m.params %}
+                        <li><a href="{% url m.name_path m.params.page %}" class="nav-link px-2 text-white">{{ m.name_link }}</a></li>
+                      {% else %}
+                        <li><a href="{% url m.name_path%}" class="nav-link px-2 text-white">{{ m.name_link }}</a></li>
+                      {% endif %}                   
+                      {% endif %}
                 {% endfor %}
-
+                    <li class="parent-dropdown">
+                      <a class="nav-link px-2 text-white">Категории</a>
+                        <div class="dropdown-menu-block">
+                          {% show_cats sort='name' cat_name=cat_name %}
+                        </div>
+                    </li>
                 </ul>
         
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">

@@ -1,0 +1,10 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+<div class="error_content container">
+    <h1 class="mt-5">Запрашиваемая страница не найдена.</h1>
+    <p class="lead">Судя по всему, запрашиваемой страницы не существует или она была временно перемещена.</p>
+    <p>Вы можете вернуться на <a href="{% url 'index' %}">главную</a> страницу.</p>
+</div>
+
+{% endblock %}

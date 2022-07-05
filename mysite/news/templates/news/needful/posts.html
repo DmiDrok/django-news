@@ -7,10 +7,11 @@
                     <img src="{{ new.photo.url }}" alt="" class="photo_new">
 
                     <div class="card-body">
+                    <p class="card-text"><strong>{{ new.title | truncatechars:50 }}</strong></p>
                     <p class="card-text">{{ new.content | truncatewords:15 | striptags }}</p>
                     <div class="d-flex justify-content-between align-items-center about_new">
                         <div class="btn-group">        
-                            <a href="{% url 'new' new_id=new.pk %}" class="btn btn-sm btn-outline-secondary">
+                            <a href="{{ new.get_absolute_url }}" class="btn btn-sm btn-outline-secondary">
                                 Читать
                             </a>
                         </div>
@@ -27,4 +28,14 @@
         </div>
       </div>
     </div>
+</div>
+
+<div class="paginate">
+    {% for page in paginate_pages %}
+        {% if page == num_page %}
+            <a href="{% url 'all_news' num_page=page %}" class="active">{{ page }}</a>
+        {% else %}
+            <a href="{% url 'all_news' num_page=page %}">{{ page }}</a>
+        {% endif %}
+    {% endfor %}
 </div>

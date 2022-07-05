@@ -1,0 +1,11 @@
+<ul class="dropdown-menu dropdown-menu-dark position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px">   
+    {% for cat in cats %}
+      {% if cat.name == cat_name %}
+        <li><a class="dropdown-item rounded-2 active" href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+      {% else %}
+        <li><a class="dropdown-item rounded-2" href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+      {% endif %}
+    {% endfor %}
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item rounded-2" href="{% url 'all_news' num_page=0 %}">Все категории</a></li>
+</ul>
