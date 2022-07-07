@@ -25,6 +25,8 @@
         
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 
+                {% get_menu active=active as menu %}
+
                 {% for m in menu %}
                     {% if m.status == 'active' %}
                      {% if m.params %}

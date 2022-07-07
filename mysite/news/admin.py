@@ -7,7 +7,7 @@ class NewAdmin(admin.ModelAdmin):
     list_display = ("id", "title", "time_create", "time_update", "photo", "is_published", "cat")
     list_display_links = ("id", "title", )
     list_editable = ("is_published", )
-    list_filter = ("id", )
+    list_filter = ("id", "time_create", "cat" )
     search_fields = ("id", "title", "content", )
     prepopulated_fields = {"slug": ("title", )}
 

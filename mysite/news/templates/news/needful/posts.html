@@ -4,8 +4,9 @@
         {% for new in news %}
             <div class="col">
                 <div class="card shadow-sm">
-                    <img src="{{ new.photo.url }}" alt="" class="photo_new">
-
+                    {% if new.photo %}
+                        <img src="{{ new.photo.url }}" alt="" class="photo_new">
+                    {% endif %}
                     <div class="card-body">
                     <p class="card-text"><strong>{{ new.title | truncatechars:50 }}</strong></p>
                     <p class="card-text">{{ new.content | truncatewords:15 | striptags }}</p>

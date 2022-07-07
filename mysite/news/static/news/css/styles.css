@@ -120,3 +120,68 @@ body {
 .error_content {
     height: 50vh;
 }
+
+.title-index {
+    font-size: 43px;
+}
+
+.lead {
+    font-size: 18px;
+}
+
+.btn-get-news {
+    font-size: 18px;
+}
+
+.add_form {
+    width: 30%;
+    margin: 4rem 6rem;
+}
+
+.add_form form {
+    display: grid;
+    grid-row-gap: 15px;
+}
+
+.add_form form input:not(input[type="file"]), textarea {
+    outline: none;
+    border: 1px solid #000;
+}
+
+.add_form form input[type="submit"] {
+    width: 40%;
+    justify-self: end;
+    border-radius: 4px;
+    transition-duration: .1s;
+}
+
+.add_form form input[type="submit"]:hover {
+    background-color: #fff;
+}
+
+.add_form form textarea {
+    resize: none;
+    margin-top: 20px;
+}
+
+.add_form form input:focus, textarea:focus {
+    background-color: #fafafa;
+}
+
+.form-block-inp input:not(input[type="checkbox"]), select {
+    margin-left: 40px;
+}
+
+.form-block-inp input[type="checkbox"] { 
+    margin-left: 10px;
+}
+
+.form-error p {
+    color: #dd2222;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.form-error p::first-letter { 
+    color: #9a1c1c;
+}

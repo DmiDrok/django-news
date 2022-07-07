@@ -1,0 +1,37 @@
+{% extends 'news/base.html' %}
+
+{% block title %}
+<title>
+    Добавление новости
+</title>
+{% endblock title %}
+
+{% block content %}
+
+<div class="add_form">
+    <form action="{% url 'add_new' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-error">
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        {% for f in form %}
+            <div class="form-error">
+                {% for error in f.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+            <p class="form-block-inp">
+                <label for="{{ f.id_for_label }}">{{ f.label }}:</label>
+                {{ f }}
+            </p>
+        {% endfor %}
+
+        <button type="submit">Предложить новость</button>
+    </form>
+</div>
+
+{% endblock content %}

@@ -10,7 +10,7 @@ class New(models.Model):
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     time_update = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
     photo = models.ImageField(upload_to="%Y/%m/%d", verbose_name="Фото")
-    is_published = models.BooleanField(default=True, verbose_name="Статус публикации")
+    is_published = models.BooleanField(default=True, verbose_name="Статус ")
     cat = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name="Категория")
 
     def __str__(self):
