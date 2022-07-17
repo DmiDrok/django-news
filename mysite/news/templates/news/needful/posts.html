@@ -1,42 +1,56 @@
 <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for new in news %}
-            <div class="col">
-                <div class="card shadow-sm">
-                    {% if new.photo %}
-                        <img src="{{ new.photo.url }}" alt="" class="photo_new">
-                    {% endif %}
-                    <div class="card-body">
-                    <p class="card-text"><strong>{{ new.title | truncatechars:50 }}</strong></p>
-                    <p class="card-text">{{ new.content | truncatewords:15 | striptags }}</p>
-                    <div class="d-flex justify-content-between align-items-center about_new">
-                        <div class="btn-group">        
-                            <a href="{{ new.get_absolute_url }}" class="btn btn-sm btn-outline-secondary">
-                                Читать
-                            </a>
+          {% if news %}
+            {% for new in news %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        {% if new.photo %}
+                            <img src="{{ new.photo.url }}" alt="" class="photo_new">
+                        {% endif %}
+                        <div class="card-body">
+                        <p class="card-text"><strong>{{ new.title | truncatechars:50 }}</strong></p>
+                        <p class="card-text">{{ new.content | truncatewords:15 | striptags }}</p>
+                        <div class="d-flex justify-content-between align-items-center about_new">
+                            <div class="btn-group">
+                                <a href="{{ new.get_absolute_url }}" class="btn btn-sm btn-outline-secondary">
+                                    Читать
+                                </a>
+                            </div>
+
+                            <small class="text-muted"><u>
+                                <a href="{{ new.cat.get_absolute_url }}">{{ new.cat.name }}</a>
+                            </u></small>
+                            <small class="text-muted">Дата: {{ new.time_update | date:'Y-m-d' }}</small>
                         </div>
-                        
-                        <small class="text-muted"><u>
-                            <a href="{{ new.cat.get_absolute_url }}">{{ new.cat.name }}</a>
-                        </u></small>
-                        <small class="text-muted">Дата: {{ new.time_update | date:'Y-m-d' }}</small>
-                    </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+          {% else %}
+            <h2>Несуществующая страница! <a href="{% url 'index' %}">Главная.</a></h2>
+          {% endif %}
         </div>
       </div>
     </div>
 </div>
 
 <div class="paginate">
-    {% for page in paginate_pages %}
-        {% if page == num_page %}
-            <a href="{% url 'all_news' num_page=page %}" class="active">{{ page }}</a>
-        {% else %}
-            <a href="{% url 'all_news' num_page=page %}">{{ page }}</a>
+    {% if page_obj.has_other_pages %}
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}"><</a>
         {% endif %}
-    {% endfor %}
+
+        {% for p in paginator.page_range %}
+            {% if page_obj.number == p %}
+                <a href="?page={{ p }}" class="active">{{ p }}</a>
+            {% else %}
+                <a href="?page={{ p }}">{{ p }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">></a>
+        {% endif %}
+    {% endif %}
 </div>

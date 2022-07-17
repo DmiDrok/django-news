@@ -1,0 +1,11 @@
+#header {
+    background-color: #61184cd1;
+}
+
+.module caption {
+    background-color: #61184cd1;
+}
+
+input[type="submit"] {
+    background-color: #61184cd1 !important;
+}

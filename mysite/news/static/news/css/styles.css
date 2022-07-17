@@ -185,3 +185,30 @@ body {
 .form-error p::first-letter { 
     color: #9a1c1c;
 }
+
+.dropdown-menu {
+    z-index: 100;
+    position: relative !important;
+}
+
+.reg_auth_form_block {
+    width: 50%;
+    margin: 2rem auto;
+}
+
+.reg_auth_form_block form {
+    display: grid;
+    grid-row-gap: 10px;
+}
+
+.reg {
+    width: 40%;
+    margin-top: 25px;
+    justify-self: end;
+}
+
+.el-form {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 25% 75%;
+}

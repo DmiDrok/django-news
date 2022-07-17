@@ -2,15 +2,18 @@ from django.db import models
 
 from django.urls import reverse
 
+from django.core.exceptions import ValidationError
+
+
 # Модель новостей
 class New(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
-    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name="URL")
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, null=True, verbose_name="URL", error_messages={'unique': 'Ошибка в URL'})
     content = models.TextField(blank=True, verbose_name="Содержание")
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     time_update = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
     photo = models.ImageField(upload_to="%Y/%m/%d", verbose_name="Фото")
-    is_published = models.BooleanField(default=True, verbose_name="Статус ")
+    is_published = models.BooleanField(default=True, verbose_name="Статус публикации")
     cat = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name="Категория")
 
     def __str__(self):
